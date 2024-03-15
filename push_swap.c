@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:27:27 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/15 16:08:30 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:41:29 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int main(int argc, char **argv)
 	init_a(&a, argv + 1, argc == 2);
 	if(!stack_sorted(&a))
 	{
-		printf ("In");
 		if (stack_len(&a) == 2)
 			sa(&a, false);
 		else if (stack_len(&a) == 3)

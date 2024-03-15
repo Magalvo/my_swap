@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 18:39:10 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/15 14:23:02 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:57:39 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,23 @@ static void	push(t_stack *dst, t_stack *src)
 {
 	t_node	*push_node;
 
-	if (!src)
+	if (!src || !(src->head))
 		return ;
-	push_node = (src)->head;
-	(src)->head = (src)->head->next;
-	if (src)
+		
+	push_node = src->head;
+	src->head = src->head->next;
+	
+	if (src->head)
 		(src)->head->prev = NULL;
+
+	if (dst->head)
+		dst->head->prev= push_node;
+
+	push_node->next = dst->head;
 	push_node->prev = NULL;
-	if (!dst)
-	{
-		(dst)->head = push_node;
-		push_node->next = NULL;
-	}
-	else
-	{
-		push_node->next = (dst)->head;
-		(dst)->head->prev = push_node;
-		(dst)->head = push_node;
-	}
+	dst->head = push_node;
+	dst->size++;
+	src->size--;
 }
 
 void	pa(t_stack *a, t_stack *b, bool print)
@@ -45,7 +44,7 @@ void	pa(t_stack *a, t_stack *b, bool print)
 
 void	pb(t_stack *b, t_stack *a, bool print)
 {
-	push(a, b);
+	push(b, a);
 	if (!print)
-		ft_putstr_fd("pa\n", 1);
+		ft_putstr_fd("pb\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:32:23 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/15 14:34:11 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:40:38 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,16 @@ int	error_syntax(char *str_nbr)
 
 int	error_repetition(t_stack *a, int nbr)
 {
-	if (!a)
+	t_node	*current;
+	
+	if (!a || !a->head)
 		return (0);
-	while (a)
+	current = a->head;
+	while (current)
 	{
-		if (a->head->value == nbr)
+		if (current->value == nbr)
 			return (ft_putstr_fd("Error\n", 2), 1);
-		a->head = a->head->next;
+		current = current->next;
 	}
 	return (0);
 }
