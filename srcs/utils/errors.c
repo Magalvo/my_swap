@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:32:23 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/14 21:47:33 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:34:11 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_all(char **in)
 	free(in);
 }
 
-void	free_stack(t_stack **stack, char **av, bool flag)
+void	free_stack(t_stack *stack, char **av, bool flag)
 {
 	t_node  *tmp;
 	t_node  *current;
@@ -31,14 +31,14 @@ void	free_stack(t_stack **stack, char **av, bool flag)
 		free_all(av);
 	if(!stack)
 		return ;
-	current = (*stack)->head;
+	current = (stack)->head;
 	while (current)
 	{
 		tmp = current->next;
 		free(current);
 		current = tmp;
 	}
-	*stack = NULL;
+	stack = NULL;
 }
 
 int	error_syntax(char *str_nbr)
@@ -71,7 +71,7 @@ int	error_repetition(t_stack *a, int nbr)
 	}
 	return (0);
 }
-void	error_free(t_stack **a, char **argv, bool flag_argc_2)
+void	error_free(t_stack *a, char **argv, bool flag_argc_2)
 {
 	free_stack(a, argv - 1, flag_argc_2);
 	exit(1);

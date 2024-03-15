@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:27:27 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/14 23:43:14 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:08:30 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,21 @@ void	print_list(t_stack *stack)
 
 int main(int argc, char **argv)
 {
-	static t_stack *a;
-	static t_stack *b;
+	static t_stack a;
+	static t_stack b;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (ft_putstr_fd("Error\n", 2), 0);
 	if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	init_a(&a, argv + 1, argc == 2);
-	if(!stack_sorted(a))
+	if(!stack_sorted(&a))
 	{
-		if (stack_len(a) == 2)
+		printf ("In");
+		if (stack_len(&a) == 2)
 			sa(&a, false);
-		else if (stack_len(a) == 3)
+		else if (stack_len(&a) == 3)
 			sort_three(&a);
-	/* 	else if (stack_len(a) <= 75)
-			turk_sort(&a, &b); */
 		else 
 			quick_friend(&a, &b);
 	}

@@ -6,13 +6,13 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:53:10 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/14 22:25:59 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:16:54 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	init_a(t_stack **a, char **argv, bool flag)
+void	init_a(t_stack *a, char **argv, bool flag)
 {
 	long	nbr;
 	int		i;
@@ -28,7 +28,7 @@ void	init_a(t_stack **a, char **argv, bool flag)
 			ft_putstr_fd("Error\n", 2);
 			error_free(a, argv, flag);
 		}	
-		if (error_repetition(*a, (int)nbr))
+		if (error_repetition(a, (int)nbr))
 		{
 			ft_putstr_fd("Error\n", 2);
 			error_free(a, argv, flag);

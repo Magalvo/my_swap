@@ -6,22 +6,22 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:31:47 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/14 23:18:56 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/15 15:47:01 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	sort_three(t_stack **a)
+void	sort_three(t_stack *a)
 {
 	t_node *biggest_node;
 
-	biggest_node = find_max(*a);
-	if (biggest_node == (*a)->head)
+	biggest_node = find_max(a);
+	if (biggest_node == (a)->head)
 		ra(a, false);
-	else if ((*a)->head->next == biggest_node)
+	else if ((a)->head->next == biggest_node)
 		rra(a, false);
-	if ((*a)->head->value > (*a)->head->next->value)
+	if ((a)->head->value > (a)->head->next->value)
 		sa(a, false);
 }
 int	top_cost(t_stack *stack, t_node *small)
@@ -39,29 +39,29 @@ int	top_cost(t_stack *stack, t_node *small)
 	return (cost);
 }
 
-void	sort_ten(t_stack **a, t_stack **b)
+void	sort_ten(t_stack *a, t_stack *b)
 {
 	t_node	*small;
 	t_node	*first;
 
-	first = find_min(*a);
-	while (!stack_sorted(*a))
+	first = find_min(a);
+	while (!stack_sorted(a))
 	{
-		small = find_min(*a);
-		if (stack_len(*a) <= 3)
+		small = find_min(a);
+		if (stack_len(a) <= 3)
 			sort_three(a);
 		else
 		{
-			if (stack_len(*a) / 2 > top_cost((*a), small))
-				while (!stack_sorted(*a) && (*a)->head != small)
+			if (stack_len(a) / 2 > top_cost((a), small))
+				while (!stack_sorted(a) && (a)->head != small)
 					ra(a, false);
 			else
-				while (!stack_sorted(*a) && (*a)->head != small)
+				while (!stack_sorted(a) && (a)->head != small)
 					rra(a, false);
-			if (!stack_sorted(*a))
+			if (!stack_sorted(a))
 				pb(b, a, false);
 		}
 	}
-	while ((*a)->head != first)
+	while (a->head != first)
 		pa(a, b, false);
 } 
