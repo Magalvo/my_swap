@@ -6,7 +6,7 @@
 #    By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 18:26:26 by dde-maga          #+#    #+#              #
-#    Updated: 2024/03/14 23:39:34 by dde-maga         ###   ########.fr        #
+#    Updated: 2024/03/18 20:46:08 by dde-maga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJ = $(addprefix $(SRCOBJ), $(SRC:./srcs/%.c=%.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@${CC} ${CFLAGS} push_swap.c ${OBJ} -o $(NAME)
+	@${CC} ${CFLAGS} -g3 push_swap.c ${OBJ} -o $(NAME)
 
 $(SRCOBJ)%.o: srcs/%.c
 	@mkdir -p $(SRCOBJ)
