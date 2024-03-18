@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 20:22:45 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/15 15:42:03 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:08:32 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,27 @@ int	ranking(t_stack *stack)
 	assign_ranks(stack, arr, len);
 	free(arr);
 	return (0);
+}
+
+void	current_index(t_stack *stack)
+{
+	int	i;
+	int	median;
+	t_node *current;
+
+	if (!stack || !(stack->head))
+		return ;
+	i = 0;
+	current = stack->head;
+	median = stack_len(stack)/2;
+	while(current)
+	{
+		current->index = i;
+		if (i <= median)
+			current->above_median = true;
+		else 
+			current->above_median = false;
+		current = current->next;
+		++i;
+	}
 }

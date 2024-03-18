@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 19:36:04 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/18 22:22:06 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:11:26 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ void	quick_friend(t_stack *a, t_stack *b)
 	}
 	while(b)
 	{
+		current_index(a);
+		current_index(b);
+		set_target_b(a, b);
+		cost_analysis_b(a,b);
+		set_cheapest(b);
 		
 	}
 }

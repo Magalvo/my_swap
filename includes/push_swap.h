@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 18:29:10 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/03/15 15:31:37 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/03/18 23:10:29 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ struct s_node
 	int				index;
 	bool			cheapest;	
 	bool			above_median;
+	struct s_node	*target;
 	struct s_node	*prev;
 	struct s_node	*next;
 };
@@ -45,7 +46,7 @@ struct	s_stack
 	int		quarter;
 	t_node	*head;
 	t_node	*tail;
-	t_node	*target;
+	t_node	*cheapest_node;
 };
 
 
@@ -96,5 +97,11 @@ size_t			ft_strlen(const char *s);
 long			ft_atol(const char *str);
 
 void	init_a(t_stack *a, char **argv, bool flag);
+
+void	set_target_b(t_stack *a, t_stack *b);
+void	set_cheapest(t_stack *stack);
+void	cost_analysis_b(t_stack *a, t_stack *b);
+
+void	current_index(t_stack *stack);
 
 #endif
